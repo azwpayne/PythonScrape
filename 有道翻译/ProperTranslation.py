@@ -9,13 +9,13 @@ import random
 import hashlib
 import requests
 
-
+# 定义MD5方法
 def hex5(value):
     manipulator = hashlib.md5()
     manipulator.update(value.encode('utf-8'))
     return manipulator.hexdigest()
 
-
+# 获取表单数据
 def Mach(string):
     e = string
     ts = round(time())
@@ -40,7 +40,7 @@ def Mach(string):
     }
     return data
 
-
+# 构造请求方法
 def Translation(url, data):
     header = {
         'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -68,6 +68,7 @@ def main():
     e = input('请输需翻译的内容（不得大于5000字！）:')
     data = Mach(e)
     translate = Translation(url, data=data)
+#    提取json数据
     print(translate.json()['translateResult'][0][0]['tgt'])
 
 
